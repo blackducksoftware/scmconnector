@@ -1,0 +1,81 @@
+<email> 
+    <from>${smtpFrom}</from> 
+    <to>${smtpTo}</to> 
+    <subject>Project Scan Completed for Project ${projectName}</subject> 
+    <style><![CDATA[
+    
+    <STYLE type="text/css">
+    b {color: purple}
+    </STYLE>
+
+    
+    ]]></style>
+    <body><![CDATA[
+   
+    <h3>Analysis Powered by: Black Duck&trade; Protex</h3>
+    <p><b>Project Name:</b> ${projectName} </p>
+    <p><b>Scan Start Time:</b> ${analysisStartDate} </p>
+    <p><b>Scan Finish Time:</b> ${analysisFinishDate} </p>
+    <p><b>Scan Performed By:</b> ${analyzedBy} </p>
+    <p><b>Scan Type:</b> ${scanType} </p>
+    <p><b>Code Repository Type:</b> ${connectorName} </p>
+    <p><b>Code Repository Path:</b> ${connectorRepositoryPath} </p>
+    <table border="1">
+	<tr>
+	<td></td>
+	<td>Total #</td>
+	<td>Total # As Part of Delta Scan</td>
+	</tr>
+	
+	<tr>
+	<td>Files Scanned</td>
+	<td>${fileCount}</td>
+	<td>${deltaFileCount}</td>
+	</tr>
+	
+	<tr>
+	<td>Pending Identification</td>
+	<td>${pendingIdFileCount}</td>
+	<td>${deltaIdFileCount}</td>
+	</tr>
+	
+	<tr>
+	<td>Pending Code Match Identification</td>
+	<td>${pendingCodeMatchIdFileCount}</td>
+	<td>${deltaCodeMatchIdFileCount}</td>
+	</tr>
+	
+	<tr>
+	<td>Pending String Search Identification</td>
+	<td>${pendingStringSearchIdFileCount}</td>
+	<td>${deltaStringSearchIdFileCount}</td>
+	</tr>
+	
+	<tr>
+	<td>Pending Dependency Identification</td>
+	<td>${pendingDependenciesIdFileCount}</td>
+	<td>${deltaDependenciesIdFileCount}</td>
+	</tr>
+	
+	<tr>
+	<td>Pending File Pattern Identification</td>
+	<td>${pendingFileDiscoveryPatternIdFileCount}</td>
+	<td>${deltaFileDiscoveryPatternIdFileCount}</td>
+	</tr>
+	
+	<tr>
+	<td>Rapid ID Code Matches</td>
+	<td>${rapidIdCount}</td>
+	<td>${deltaRapidIdCount}</td>
+	</tr>
+	
+	<tr>
+	<td>Pending Review</td>
+	<td>${pendingReviewFileCount}</td>
+	<td>${deltaPendingReviewFileCount}</td>
+	</tr>
+	
+	</table>
+	<p><b>BOM URL for project:</b> ${bomUrl} </p>
+    ]]></body> 
+</email>

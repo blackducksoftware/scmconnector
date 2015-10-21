@@ -1,0 +1,10 @@
+<email> 
+    <from>${smtpFrom}</from> 
+    <to>${smtpTo}</to> 
+    <subject>User-Defined Analysis Summary Email for Project ${projectName}</subject> 
+    <body><![CDATA[
+   
+    <h3>User-Defined Email</h3>
+    <p>Not much to say</p>
+    ]]></body> 
+</email>

@@ -1,0 +1,20 @@
+<email> 
+    <from>${smtpFrom}</from> 
+    <to>${smtpTo}</to> 
+    <subject>Error Scanning Project ${projectName}</subject> 
+    <style><![CDATA[
+    
+    <STYLE type="text/css">
+    b {color: purple}
+    </STYLE>
+
+    
+    ]]></style>
+    <body><![CDATA[
+   
+    <h3> ${errorMessage}</h3>
+    <p><b>Project Name:</b> ${projectName} </p>
+    <p><b>Stack Trace:</b> ${stackTrace} </p>
+
+    ]]></body> 
+</email>

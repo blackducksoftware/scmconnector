@@ -1,0 +1,50 @@
+<assembly>  
+	<includeBaseDirectory>false</includeBaseDirectory> 
+	<formats>
+		<format>zip</format> 
+	</formats> 
+	  <id>${project.version}</id>
+	<fileSets> 
+	
+		   <fileSet>
+	       <directory>${project.basedir}/src/main/resources</directory>
+	       	<outputDirectory>/properties</outputDirectory>
+	       	<includes>
+				<include>*</include>
+			</includes>
+	    </fileSet>
+	<!--  Drop readme into root -->
+		 <fileSet>
+	       <directory>${project.basedir}</directory>
+	       	<outputDirectory>/</outputDirectory>
+	       	<includes>
+				<include>*.pdf</include>
+				<include>*RELEASE*</include>
+				<include>*config*</include>
+			</includes>
+	    </fileSet>
+		<fileSet> 
+			<directory>${project.build.directory}/deploy/bin</directory> 
+			<outputDirectory>/bin</outputDirectory>
+			<includes>
+				<include>*</include>
+			</includes>
+			<fileMode>0777</fileMode>
+		</fileSet> 
+		<fileSet> 
+			<directory>${project.build.directory}/deploy/lib</directory> 
+			<outputDirectory>/lib</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet> 	
+		<!--  Any external non-maven libs  -->
+		<fileSet> 
+			<directory>${project.basedir}/externallib</directory> 
+			<outputDirectory>/lib</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet> 	
+	</fileSets> 
+</assembly> 

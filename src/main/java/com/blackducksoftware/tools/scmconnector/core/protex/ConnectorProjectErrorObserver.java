@@ -1,0 +1,46 @@
+/*******************************************************************************
+ * Copyright (C) 2015 Black Duck Software, Inc.
+ * http://www.blackducksoftware.com/
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 2 only
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License version 2
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *******************************************************************************/
+package com.blackducksoftware.tools.scmconnector.core.protex;
+
+import com.blackducksoftware.tools.commonframework.standard.email.EmailNotifier;
+import com.blackducksoftware.tools.scmconnector.core.Connector;
+
+public class ConnectorProjectErrorObserver implements ProjectErrorObserver {
+    private final Connector connector;
+    private final EmailNotifier emailNotif;
+
+    public ConnectorProjectErrorObserver(Connector connector,
+	    EmailNotifier emailNotif) {
+	this.connector = connector;
+	this.emailNotif = emailNotif;
+    }
+
+    @Override
+    public void reportError(Exception e, String message, String projectName) {
+	if (message
+		.contains("General error, cannot continue: Could not send Message")) {
+	    message += "; Please check the protex server URL";
+	}
+	connector.setStatus(-1);
+	connector.setErrorMessage(message + "; " + e.getMessage()
+		+ "(Project: " + projectName + ")");
+	emailNotif.sendErrorNotification(e, message, "error_notifications.xml",
+		projectName);
+    }
+
+}
