@@ -20,6 +20,8 @@ package com.blackducksoftware.tools.scmconnector.core.protex;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.blackducksoftware.sdk.fault.SdkFault;
 import com.blackducksoftware.sdk.protex.project.Project;
 import com.blackducksoftware.sdk.protex.project.bom.FileCountType;
@@ -40,6 +42,8 @@ import com.blackducksoftware.tools.commonframework.standard.protex.ProtexProject
 
 // helper class utilized to executed common functions of the Protex SDK
 public class ProtexUtils {
+    private static final Logger log = Logger.getLogger(ProtexUtils.class
+	    .getName());
     private final ProtexServerWrapper<ProtexProjectPojo> protexServerWrapper;
 
     public ProtexUtils(
@@ -202,6 +206,7 @@ public class ProtexUtils {
     static PartialCodeTree getCodeTreeForProjectDeep(
 	    ProtexServerWrapper<ProtexProjectPojo> protexServerWrapper,
 	    Project project) throws SdkFault {
+	log.debug("Fetching code tree");
 	List<CodeTreeNodeType> nodeTypesToInclude = new ArrayList<CodeTreeNodeType>();
 	nodeTypesToInclude.add(CodeTreeNodeType.FOLDER);
 	nodeTypesToInclude.add(CodeTreeNodeType.EXPANDED_ARCHIVE);
@@ -212,6 +217,7 @@ public class ProtexUtils {
 		.getCodeTreeByNodeTypes(project.getProjectId(), "/", -1, true,
 			nodeTypesToInclude);
 
+	log.debug("Done fetching code tree");
 	return tree;
     }
 

@@ -240,6 +240,7 @@ public class AnalysisResults {
 	    ProtexServerWrapper<ProtexProjectPojo> protexServerWrapper,
 	    Project project) {
 
+	log.info("Collecting pre-analysis info");
 	projectInfoPojo.setPreAnalysisFileCount(protexUtils
 		.getFileCount(project));
 	projectInfoPojo.setPreAnalysisPendingFileCount(protexUtils
@@ -260,8 +261,10 @@ public class AnalysisResults {
 	ProtexIdentifications protexIdentifications = new ProtexIdentifications(
 		protexServerWrapper);
 	try {
+	    log.info("...Collecting pre analysis rapid ID count");
 	    projectInfoPojo.setPreAnalysisRapidIdCount(protexIdentifications
 		    .getRapidCount(project));
+	    log.info("...Done collecting pre analysis rapid ID count");
 	} catch (Exception e) {
 	    log.info("Unable to get pre-analysis ID info for project "
 		    + project.getName() + ": " + e.getMessage());
@@ -276,6 +279,7 @@ public class AnalysisResults {
 	}
 
 	projectInfoPojo.setScanType(scanType);
+	log.info("Done collecting pre-analysis info");
     }
 
     /**
@@ -288,6 +292,7 @@ public class AnalysisResults {
     public void setPostAnalysisInfo(ProtexUtils protexUtils,
 	    ProtexServerWrapper<ProtexProjectPojo> protexServerWrapper,
 	    Project project) {
+	log.info("Collecting post-analysis info");
 	AnalysisInfo analysisInfo = null;
 	try {
 	    analysisInfo = protexUtils.getLastAnalysisInfo(project);
@@ -323,7 +328,9 @@ public class AnalysisResults {
 	ProtexIdentifications protexIdentifications = new ProtexIdentifications(
 		protexServerWrapper);
 	try {
+	    log.info("....Collecting post-analysis rapidIdCount");
 	    rapidCount = protexIdentifications.getRapidCount(project);
+	    log.info("....Done collecting post-analysis rapidIdCount");
 	} catch (Exception e) {
 	    log.warn("Unable to obtain rapid count for project with name: "
 		    + project.getName());
@@ -335,7 +342,7 @@ public class AnalysisResults {
 		+ project.getProjectId()
 		+ "&ProtexIPIdentifyFileViewLevel=folder&ProtexIPIdentifyFileId=-1";
 	projectInfoPojo.setBomUrl(bomUrl);
-
+	log.info("Done collecting post-analysis info");
     }
 
     /**

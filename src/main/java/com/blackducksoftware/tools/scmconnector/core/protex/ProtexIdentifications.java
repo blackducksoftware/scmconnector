@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.blackducksoftware.sdk.fault.SdkFault;
 import com.blackducksoftware.sdk.protex.project.Project;
 import com.blackducksoftware.sdk.protex.project.codetree.PartialCodeTree;
@@ -32,6 +34,8 @@ import com.blackducksoftware.tools.commonframework.connector.protex.ProtexServer
 import com.blackducksoftware.tools.commonframework.standard.protex.ProtexProjectPojo;
 
 public class ProtexIdentifications {
+    private static final Logger log = Logger
+	    .getLogger(ProtexIdentifications.class.getName());
     private final ProtexServerWrapper<ProtexProjectPojo> protexServerWrapper;
     private final Map<Project, List<Identification>> rapidIdLists = new HashMap<Project, List<Identification>>();
     private final Map<Project, List<Identification>> manualIdLists = new HashMap<Project, List<Identification>>();
@@ -76,9 +80,11 @@ public class ProtexIdentifications {
 	try {
 	    nodes = ProtexUtils.getCodeTreeForProjectDeep(protexServerWrapper,
 		    project);
+	    log.debug("Fetching applied identifications");
 	    codeTreeIdentificationInfoList = protexServerWrapper
 		    .getInternalApiWrapper().getIdentificationApi()
 		    .getAppliedIdentifications(project.getProjectId(), nodes);
+	    log.debug("Done fetching applied identifications");
 	} catch (SdkFault e) {
 	    throw new Exception("Error getting identifications for project "
 		    + project.getName() + ": " + e.getMessage());
