@@ -196,6 +196,7 @@
 					<assembleDirectory>${project.build.directory}/deploy</assembleDirectory>
 					<repositoryLayout>flat</repositoryLayout>
 					<repositoryName>lib</repositoryName>
+					<useWildcardClassPath>true</useWildcardClassPath>
 					<programs>
 						<program>
 							<mainClass>com.blackducksoftware.tools.scmconnector.core.ConnectorRunner</mainClass>
