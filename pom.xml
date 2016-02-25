@@ -132,7 +132,7 @@
 		<dependency>
 			<groupId>com.blackducksoftware.plugins</groupId>
 			<artifactId>protex-plugin-integration</artifactId>
-			<version>1.1-SNAPSHOT</version>
+			<version>1.0.7</version>
 		</dependency>
     
 	</dependencies>
