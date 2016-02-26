@@ -20,7 +20,7 @@ import com.blackducksoftware.tools.scmconnector.core.Notifier;
 import com.blackducksoftware.tools.scmconnector.core.ProjectInfoPOJO;
 
 public class NotifierTest {
-    private static final long JUNE_18_2015_15_02_13_EDT = 1434654133003L;
+    private static final Date JUNE_18_2015_15_02_13_EDT = new Date(1434654133003L);
     private final String PROJECT_NAME1 = "JUnit_NotifierTest";
     private static final String SERVER_NAME = "se-px01.dc1.lan";
     private static final String SERVER_PROTOCOL = "https";
@@ -31,8 +31,8 @@ public class NotifierTest {
 
     private static final String EXPECTED_EMAIL_BODY_STANDARD = "<h3>Analysis Powered by: Black Duck&trade; Protex</h3>\n"
 	    + "    <p><b>Project Name:</b> testProjectName </p>\n"
-	    + "    <p><b>Scan Start Time:</b> Thu Jun 18 15:02:13 EDT 2015 </p>\n"
-	    + "    <p><b>Scan Finish Time:</b> Thu Jun 18 15:02:13 EDT 2015 </p>\n"
+	    + "    <p><b>Scan Start Time:</b> " + JUNE_18_2015_15_02_13_EDT + " </p>\n"
+	    + "    <p><b>Scan Finish Time:</b> " + JUNE_18_2015_15_02_13_EDT + " </p>\n"
 	    + "    <p><b>Scan Performed By:</b> testAnalyzedBy </p>\n"
 	    + "    <p><b>Scan Type:</b> testScanType </p>\n"
 	    + "    <p><b>Code Repository Type:</b> testConnector </p>\n"
@@ -155,9 +155,8 @@ public class NotifierTest {
 	projectInfoPojo.setPostAnalysisStringSearchPendingIdFileCount(17);
 
 	AnalysisInfo analysisInfo = new AnalysisInfo();
-	Date date = new Date(JUNE_18_2015_15_02_13_EDT);
-	analysisInfo.setAnalysisFinishedDate(date);
-	analysisInfo.setAnalysisStartedDate(date);
+	analysisInfo.setAnalysisFinishedDate(JUNE_18_2015_15_02_13_EDT);
+	analysisInfo.setAnalysisStartedDate(JUNE_18_2015_15_02_13_EDT);
 	analysisInfo.setAnalyzedBy("testAnalyzedBy");
 	projectInfoPojo.setAnalysisInfo(analysisInfo);
 	AnalysisResults projectAnalysisResults = new AnalysisResults(config,
@@ -203,9 +202,8 @@ public class NotifierTest {
 	projectInfoPojo.setPostAnalysisStringSearchPendingIdFileCount(17);
 
 	AnalysisInfo analysisInfo = new AnalysisInfo();
-	Date date = new Date(JUNE_18_2015_15_02_13_EDT);
-	analysisInfo.setAnalysisFinishedDate(date);
-	analysisInfo.setAnalysisStartedDate(date);
+	analysisInfo.setAnalysisFinishedDate(JUNE_18_2015_15_02_13_EDT);
+	analysisInfo.setAnalysisStartedDate(JUNE_18_2015_15_02_13_EDT);
 	analysisInfo.setAnalyzedBy("testAnalyzedBy");
 	projectInfoPojo.setAnalysisInfo(analysisInfo);
 	AnalysisResults projectAnalysisResults = new AnalysisResults(config,
