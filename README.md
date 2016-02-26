@@ -14,6 +14,10 @@ You can pull the binary from GitHub: https://github.com/blackducksoftware/scmcon
 
 Please see the wiki for more information: https://github.com/blackducksoftware/scmconnector/wiki
 
+## Build
+
+Travis CI:  https://travis-ci.org/blackducksoftware/scmconnector
+
 ## License
 
 GNU General Public License v2.0 only.
