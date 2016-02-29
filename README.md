@@ -1,4 +1,7 @@
 # scmconnector
+
+[![Build Status](https://travis-ci.org/blackducksoftware/scmconnector.svg?branch=master)](https://travis-ci.org/blackducksoftware/scmconnector)
+
 ## Overview
 
 The SCM Connector utility checks source code out of a Source Code Management (SCM) system,
@@ -13,10 +16,6 @@ You can pull the binary from GitHub: https://github.com/blackducksoftware/scmcon
 ## Documentation
 
 Please see the wiki for more information: https://github.com/blackducksoftware/scmconnector/wiki
-
-## Build
-
-Travis CI:  https://travis-ci.org/blackducksoftware/scmconnector
 
 ## License
 
